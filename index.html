@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GajiUMKM - Payroll & Overtime System</title>
+    <title>GajiUMKM - Payroll & Overtime System (Offline & Edit Name Ready)</title>
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,12 +49,11 @@
         }
     </script>
     
-    <!-- Third Party Libraries -->
+    <!-- Third Party Libraries (Dapat diunduh untuk diletakkan di folder lokal agar 100% offline) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/paparse.min.js"></script>
-    <!-- SheetJS to support XLS/XLSX file formats parsing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
     <style>
@@ -109,7 +108,7 @@
                     <h1 class="text-base font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
                         GajiUMKM <span class="text-[10px] uppercase font-bold tracking-wider bg-indigo-50 text-brand-slate px-2 py-0.5 rounded-full border border-indigo-100">WITA Engine</span>
                     </h1>
-                    <p class="text-[11px] text-slate-500 font-medium">Standard Perhitungan Jam Kerja Khusus Sabtu & Libur Nasional</p>
+                    <p class="text-[11px] text-slate-500 font-medium">Sistem Penggajian & Lembur Offline • Edit Nama Langsung</p>
                 </div>
             </div>
             
@@ -202,7 +201,7 @@
                     </div>
                 </div>
 
-                <!-- Section 2: Upload Absen dari Lap. Log Absen (6_StandardReport.xls) -->
+                <!-- Section 2: Upload Absen -->
                 <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-4">
                     <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
                         <span class="w-1.5 h-3 bg-brand-slate rounded-full"></span>
@@ -219,7 +218,7 @@
                     </div>
 
                     <div class="bg-indigo-50/50 rounded-xl p-3 border border-indigo-100 space-y-1.5 text-xs">
-                        <p class="font-bold text-brand-slate uppercase tracking-wider text-[10px]">Petunjuk Ekspor Mesin:</p>
+                        <p class="font-bold text-brand-slate uppercase tracking-wider text-[10px]">Petunjuk Ekspor & Jalankan Offline:</p>
                         <p class="text-slate-600 text-[11px] leading-relaxed">Mendukung file Excel mentah (.xls / .xlsx) langsung dari tab **Lap. Log Absen** (Standard Report) atau file CSV.</p>
                         <button onclick="downloadFormatContoh()" class="text-[11px] text-brand-slate hover:underline font-bold flex items-center gap-1 mt-1">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
@@ -228,7 +227,7 @@
                     </div>
                 </div>
 
-                <!-- Section 3: Tanggal Merah / Libur Nasional -->
+                <!-- Section 3: Tanggal Merah -->
                 <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-4">
                     <div class="flex justify-between items-center">
                         <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
@@ -255,7 +254,7 @@
                     
                     <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
                         <div>
-                            <h4 class="text-xs font-bold text-slate-440 uppercase tracking-widest">Total Pengeluaran Gaji</h4>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Total Pengeluaran Gaji</h4>
                             <p id="dash-total-payroll" class="text-2xl font-black text-brand-slate mt-1">Rp 0</p>
                             <p class="text-[10px] text-slate-400 mt-1">Jumlah bersih akumulasi bulan ini</p>
                         </div>
@@ -339,7 +338,7 @@
                     </div>
                     
                     <div class="flex flex-wrap gap-4 text-[10px] font-semibold text-slate-500 pt-2 justify-center">
-                        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-blue-50 border border-blue-200 rounded"></span> Hari Biasa (Normal s/d 17:00)</span>
+                        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-blue-50 border border-blue-200 rounded"></span> Hari Biasa (Normal s/d 17:00 • Lembur > 18:00)</span>
                         <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-amber-50 border border-amber-200 rounded"></span> Sabtu (Normal s/d 15:00)</span>
                         <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-rose-50 border border-rose-200 rounded"></span> Minggu & Libur (Full Lembur)</span>
                     </div>
@@ -385,7 +384,7 @@
                 </div>
             </div>
 
-            <!-- Consolidated Rijitan Calculations -->
+            <!-- Consolidated Rijitan Calculations with Editable Names -->
             <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
                 <div class="p-5 border-b border-slate-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div>
@@ -393,7 +392,7 @@
                             <span class="w-1.5 h-3 bg-brand-slate rounded-full"></span>
                             Tabel Rijitan - Kalkulasi Penggajian Dinamis
                         </h3>
-                        <p class="text-xs text-slate-400 mt-0.5">Ringkasan gaji akhir yang otomatis sinkron dengan perubahan pada lembar Absen di atas.</p>
+                        <p class="text-xs text-slate-400 mt-0.5">Semua data dapat diedit. Anda dapat **mengubah nama karyawan secara langsung** pada input Nama di bawah ini.</p>
                     </div>
                     <div class="flex gap-2 w-full md:w-auto">
                         <button onclick="addNewEmployee()" class="text-xs font-bold bg-brand-slate hover:bg-brand-slateHover text-white px-3 py-2 rounded-xl transition-colors flex items-center gap-1">
@@ -411,7 +410,7 @@
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="bg-slate-50 text-slate-400 text-[10px] uppercase font-bold border-b border-slate-200 whitespace-nowrap">
-                                <th class="py-3 px-4">Staf / NIK</th>
+                                <th class="py-3 px-4">Nama Staf (Bisa Diedit)</th>
                                 <th class="py-3 px-3">Gaji Pokok (Basic)</th>
                                 <th class="py-3 px-3 text-center">Hari Kerja</th>
                                 <th class="py-3 px-3 text-center">Hadir</th>
@@ -624,19 +623,11 @@
                 totalWorkdays: 20, 
                 attendance: 9, 
                 overtimeMinutes: 0, 
-                bonus: 0, 
+                bonus: 200000, 
                 kasbon: 2200000, 
                 sisaCuti: 0,
                 dailyLogs: {
-                    "2": "08:4417:23",
-                    "3": "08:4417:05",
-                    "4": "08:2717:03",
-                    "5": "17:09",
-                    "6": "09:3915:05",
-                    "15": "12:0017:02",
-                    "25": "08:2817:02",
-                    "27": "08:4217:06",
-                    "30": "08:20"
+                    "2": "08:4417:23", "3": "08:4417:05", "4": "08:2717:03", "5": "17:09", "6": "09:3915:05", "15": "12:0017:02", "25": "08:2817:02", "27": "08:4217:06", "30": "08:20"
                 },
                 noOvertimeDays: {} 
             },
@@ -684,32 +675,6 @@
                     "1": "08:2917:01", "2": "08:2617:16", "3": "08:2817:10", "4": "08:3417:06", "5": "08:2814:59"
                 },
                 noOvertimeDays: {}
-            },
-            { 
-                nik: "10", 
-                name: "Rafi", 
-                basicSalary: 2600000, 
-                totalWorkdays: 20, 
-                attendance: 12, 
-                overtimeMinutes: 0, 
-                bonus: 0, 
-                kasbon: 750000, 
-                sisaCuti: 0,
-                dailyLogs: {},
-                noOvertimeDays: {}
-            },
-            { 
-                nik: "11", 
-                name: "Meyvelin", 
-                basicSalary: 3500000, 
-                totalWorkdays: 24, 
-                attendance: 21, 
-                overtimeMinutes: 0, 
-                bonus: 0, 
-                kasbon: 300000, 
-                sisaCuti: 0,
-                dailyLogs: {},
-                noOvertimeDays: {}
             }
         ];
 
@@ -721,8 +686,6 @@
         function loadDefaultUMKMData() {
             employees = JSON.parse(JSON.stringify(initialDummyData));
             selectedEmployeeIdx = 0;
-            
-            // Re-calculate based on initial logs
             recalculateAllEmployeeAttendanceAndOvertime();
             triggerGlobalRender();
             showFeedback('success', 'Data Demo Dimuat', 'Data awal rincian (Rijitan) & Absen Harian berhasil diintegrasikan.');
@@ -750,7 +713,6 @@
             }
         }
 
-        // File Drag & Drop & Input handler
         function initCSVHandlers() {
             const dropzone = document.getElementById('dropzone');
             const fileInput = document.getElementById('csv-file-input');
@@ -782,18 +744,15 @@
             });
         }
 
-        // Multi-extension parser (XLS, XLSX, CSV)
         function processUploadedFile(file) {
             const ext = file.name.split('.').pop().toLowerCase();
             
             if (ext === 'xlsx' || ext === 'xls') {
-                // Read binary file via SheetJS
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const data = new Uint8Array(e.target.result);
                     const workbook = XLSX.read(data, { type: 'array' });
                     
-                    // Look for target sheet "Lap. Log Absen" or fallback to first sheet
                     let targetSheetName = workbook.SheetNames.find(name => name.toLowerCase().includes('absen') || name.toLowerCase().includes('log'));
                     if (!targetSheetName) targetSheetName = workbook.SheetNames[0];
                     
@@ -804,7 +763,6 @@
                 };
                 reader.readAsArrayBuffer(file);
             } else {
-                // Parse standard CSV via PapaParse
                 Papa.parse(file, {
                     header: false,
                     skipEmptyLines: true,
@@ -818,7 +776,6 @@
             }
         }
 
-        // Parse Standard "Lap. Log Absen" 2D Grid Format
         function processLapLogAbsen(data) {
             if(!data || data.length < 4) {
                 showFeedback('danger', 'Format Salah', 'Berkas tidak mengandung data yang cukup.');
@@ -844,7 +801,6 @@
                     const logRow = data[i + 1];
                     if (logRow) {
                         let dailyLogs = {};
-                        // Loop days of month (from 1 to 31)
                         for (let d = 1; d <= 31; d++) {
                             const val = logRow[d];
                             if (val && val.trim() !== '') {
@@ -855,15 +811,15 @@
                         parsedEmployees.push({
                             nik: empId,
                             name: empName,
-                            basicSalary: 3500000, // Default basic salary
+                            basicSalary: 3500000,
                             totalWorkdays: parseInt(document.getElementById('comp-total-workdays').value) || 24,
-                            attendance: 0, // Computed later
-                            overtimeMinutes: 0, // Computed later
+                            attendance: 0,
+                            overtimeMinutes: 0,
                             bonus: 0,
                             kasbon: 0,
                             sisaCuti: 0,
                             dailyLogs: dailyLogs,
-                            noOvertimeDays: {} // Empty initially
+                            noOvertimeDays: {}
                         });
                     }
                     i++;
@@ -882,7 +838,6 @@
             }
         }
 
-        // Unified recalculation function for all employees based on their dailyLogs & noOvertimeDays
         function recalculateAllEmployeeAttendanceAndOvertime() {
             const year = parseInt(document.getElementById('comp-year').value) || 2026;
             const monthStr = document.getElementById('comp-month').value;
@@ -895,7 +850,6 @@
                 let attendanceCount = 0;
                 let overtimeMinutes = 0;
 
-                // Loop up to max days in month
                 const totalDaysInMonth = new Date(year, month + 1, 0).getDate();
 
                 for (let d = 1; d <= totalDaysInMonth; d++) {
@@ -905,24 +859,21 @@
                     if (logVal && logVal.trim() !== "") {
                         attendanceCount++;
 
-                        // Parse times inside the logs, e.g. "08:4417:23"
                         const times = logVal.match(/(\d{2}:\d{2})/g);
                         if (times && times.length >= 2) {
                             const checkIn = times[0];
                             const checkOut = times[times.length - 1];
 
-                            // Skip calculation if explicitly marked "Tanpa Lembur"
                             if (emp.noOvertimeDays && emp.noOvertimeDays[dayKey] === true) {
-                                // No overtime for this day
+                                // No OT
                             } else {
                                 const dayOvertime = calculateDailyOvertime(year, month, d, checkIn, checkOut, holidays);
                                 overtimeMinutes += dayOvertime;
                             }
                         } else if (times && times.length === 1) {
-                            // Single punch
                             const singleTime = times[0];
                             if (emp.noOvertimeDays && emp.noOvertimeDays[dayKey] === true) {
-                                // No overtime for this day
+                                // No OT
                             } else {
                                 const dayOvertime = calculateDailyOvertime(year, month, d, null, singleTime, holidays);
                                 overtimeMinutes += dayOvertime;
@@ -936,7 +887,7 @@
             });
         }
 
-        // Overtime rule based on WITA layout constraints
+        // Updated overtime engine according to user constraints
         function calculateDailyOvertime(year, month, day, checkIn, checkOut, holidays) {
             const date = new Date(year, month, day);
             const dayOfWeek = date.getDay(); // 0 = Sunday, 6 = Saturday
@@ -952,7 +903,7 @@
             const outMin = parseInt(outParts[1]);
             const totalOutMinutes = outHour * 60 + outMin;
 
-            // Sunday / Holiday: All work counted as overtime
+            // Sunday & Holiday: Full overtime for any presence
             if (isSunday || isHoliday) {
                 if (checkIn && checkOut) {
                     const inParts = checkIn.split(':');
@@ -960,35 +911,33 @@
                     const inMin = parseInt(inParts[1]);
                     const totalInMinutes = inHour * 60 + inMin;
                     const workedMin = totalOutMinutes - totalInMinutes;
-                    return Math.max(0, workedMin - 60); // Subtract 1 hour for break
+                    return Math.max(0, workedMin - 60); // 1-hour break reduction
                 }
                 return 0;
             }
 
-            // Saturday: Overtime threshold is after 15:00 (900 minutes)
+            // Saturday: Normal limit up to 15:00 (900 minutes)
             if (isSaturday) {
-                const saturdayLimitMin = 15 * 60; // 15:00
+                const saturdayLimitMin = 15 * 60; 
                 if (totalOutMinutes > saturdayLimitMin) {
                     return totalOutMinutes - saturdayLimitMin;
                 }
                 return 0;
             }
 
-            // Weekdays (Mon-Fri): Overtime threshold is after 17:00 (1020 minutes)
-            const weekdayLimitMin = 17 * 60; // 17:00
-            if (totalOutMinutes > weekdayLimitMin) {
-                return totalOutMinutes - weekdayLimitMin;
+            // Mon-Fri (Weekdays): Overtime threshold is strictly after 18:00 (1080 minutes)
+            const weekdayOvertimeThreshold = 18 * 60; // 18:00
+            if (totalOutMinutes > weekdayOvertimeThreshold) {
+                return totalOutMinutes - weekdayOvertimeThreshold;
             }
 
             return 0;
         }
 
-        // Compute Payroll Metrics
         function calculateRijitanGaji(emp) {
             const dailyRate = emp.basicSalary / (emp.totalWorkdays || 24);
             const presenceSalary = dailyRate * emp.attendance;
 
-            // Overtime rates standard in Indonesia: Basic Salary / 173 per hour
             const hourlyOvertimeRate = emp.basicSalary / 173;
             const minuteOvertimeRate = hourlyOvertimeRate / 60;
             const overtimePay = emp.overtimeMinutes * minuteOvertimeRate;
@@ -1005,7 +954,6 @@
             };
         }
 
-        // Render both tables and charts
         function triggerGlobalRender() {
             renderAbsenSheetTable();
             renderRijitanTable();
@@ -1017,12 +965,10 @@
             document.getElementById('badge-total-employees').textContent = employees.length;
         }
 
-        // NEW: Render the daily Absen Sheet (like the spreadsheet view)
         function renderAbsenSheetTable() {
             const tableBody = document.getElementById('absen-sheet-table-body');
             const headerEnd = document.getElementById('days-header-end');
             
-            // Clean previous day headers
             const existingHeaders = document.querySelectorAll('.dynamic-day-header');
             existingHeaders.forEach(el => el.remove());
 
@@ -1034,7 +980,6 @@
             const holidayInput = document.getElementById('comp-holidays').value;
             const holidays = holidayInput.split(',').map(x => parseInt(x.trim())).filter(x => !isNaN(x));
 
-            // Generate Day Headers dynamically
             const headerTemplate = document.getElementById('day-header-template');
             for (let d = 1; d <= totalDaysInMonth; d++) {
                 const clone = headerTemplate.content.cloneNode(true);
@@ -1042,7 +987,6 @@
                 th.removeAttribute('id');
                 th.classList.add('dynamic-day-header');
                 
-                // Style header based on Saturday/Sunday/Holiday
                 const date = new Date(year, month, d);
                 const dayOfWeek = date.getDay();
                 
@@ -1061,13 +1005,11 @@
                 headerEnd.parentNode.insertBefore(clone, headerEnd);
             }
 
-            // Generate Body rows
             tableBody.innerHTML = '';
             employees.forEach((emp, empIdx) => {
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-50 transition-colors";
                 
-                // Left Sticky Employee Name cell
                 let rowHTML = `
                     <td class="py-3 px-4 font-bold text-slate-800 bg-white sticky left-0 z-10 shadow-[2px_0_5px_rgba(0,0,0,0.03)] border-r border-slate-100 whitespace-nowrap min-w-[150px]">
                         <div>${emp.name}</div>
@@ -1075,7 +1017,6 @@
                     </td>
                 `;
 
-                // Days cells
                 for (let d = 1; d <= totalDaysInMonth; d++) {
                     const dayKey = d.toString();
                     const value = emp.dailyLogs[dayKey] || '';
@@ -1083,9 +1024,7 @@
 
                     const date = new Date(year, month, d);
                     const dayOfWeek = date.getDay();
-                    const isWeekendOrHoliday = (dayOfWeek === 0 || holidays.includes(d) || dayOfWeek === 6);
 
-                    // Colored cells to match user's Excel style reference
                     let cellBg = "bg-white";
                     if (noOt) {
                         cellBg = "bg-slate-100 line-through text-slate-400";
@@ -1119,14 +1058,12 @@
             });
         }
 
-        // Update single day log
         function updateDailyLog(empIdx, dayKey, val) {
             employees[empIdx].dailyLogs[dayKey] = val.trim();
             recalculateAllEmployeeAttendanceAndOvertime();
             triggerGlobalRender();
         }
 
-        // Toggle "Tanpa Lembur" (no overtime calculated) for specific day
         function toggleNoOvertime(empIdx, dayKey, isChecked) {
             if (!employees[empIdx].noOvertimeDays) {
                 employees[empIdx].noOvertimeDays = {};
@@ -1136,7 +1073,6 @@
             triggerGlobalRender();
         }
 
-        // Render editable Rijitan table
         function renderRijitanTable() {
             const tbody = document.getElementById('rijitan-table-body');
             tbody.innerHTML = '';
@@ -1148,9 +1084,12 @@
                 tr.className = "hover:bg-slate-50 transition-colors duration-150";
 
                 tr.innerHTML = `
-                    <td class="py-3 px-4 font-bold text-slate-800">
-                        <div>${emp.name}</div>
-                        <div class="text-[9px] text-slate-400 font-mono">NIK: ${emp.nik}</div>
+                    <td class="py-3 px-4">
+                        <!-- EDIT NAMA INPUT (Dapat Diubah Langsung secara instan) -->
+                        <input type="text" value="${emp.name}" 
+                               oninput="updateEmpField(${index}, 'name', this.value)" 
+                               class="w-36 px-2 py-1 text-xs font-bold border border-slate-200 rounded-lg text-slate-800 interactive-input bg-slate-50 hover:bg-slate-100 focus:bg-white">
+                        <div class="text-[9px] text-slate-400 font-mono mt-0.5 ml-2">NIK: ${emp.nik}</div>
                     </td>
                     <td class="py-3 px-3">
                         <input type="text" value="${formatNumStr(emp.basicSalary)}" 
@@ -1205,6 +1144,15 @@
         }
 
         function updateEmpField(index, field, value) {
+            if (field === 'name') {
+                employees[index].name = value;
+                // Sinkronisasikan perubahan nama secara langsung di semua bagian
+                renderAbsenSheetTable();
+                renderActiveSlipSelector();
+                renderSlipGajiView();
+                return;
+            }
+
             let num;
             if (field === 'basicSalary' || field === 'bonus' || field === 'kasbon') {
                 num = parseNum(value);
@@ -1233,7 +1181,7 @@
                 noOvertimeDays: {}
             });
             triggerGlobalRender();
-            showFeedback('success', 'Staf Baru Ditambahkan', 'Lengkapi detail rincian staf pada tabel.');
+            showFeedback('success', 'Staf Baru Ditambahkan', 'Nama dan detail rincian staf baru siap diubah.');
         }
 
         function removeEmployee(index) {
@@ -1246,7 +1194,6 @@
             triggerGlobalRender();
         }
 
-        // Live stats calculations and representation on Dashboard Pie Chart
         function renderDashboardStats() {
             let totalNetPayroll = 0;
             let totalOvertimeMinutes = 0;
@@ -1268,13 +1215,13 @@
             const hours = Math.round((totalOvertimeMinutes / 60) * 10) / 10;
             document.getElementById('dash-total-overtime').textContent = `${hours} Jam`;
 
-            // Legends update
             document.getElementById('chart-legend-basic').textContent = formatIDR(totalBasicGaji);
-            document.getElementById('chart-legend-overtime').textContent = formatIDR(totalBasicGaji * 173 > 0 ? (totalOvertimeMinutes * ((totalBasicGaji) / 173 / 60)) : 0);
+            const computedOtPay = totalBasicGaji * 173 > 0 ? (totalOvertimeMinutes * ((totalBasicGaji) / 173 / 60)) : 0;
+            document.getElementById('chart-legend-overtime').textContent = formatIDR(computedOtPay);
             document.getElementById('chart-legend-bonus').textContent = formatIDR(totalBonusVal);
             document.getElementById('chart-legend-deduction').textContent = formatIDR(totalDeductionVal);
 
-            drawBreakdownChart(totalBasicGaji, (totalOvertimeMinutes * (totalBasicGaji / 173 / 60)), totalBonusVal, totalDeductionVal);
+            drawBreakdownChart(totalBasicGaji, computedOtPay, totalBonusVal, totalDeductionVal);
         }
 
         function drawBreakdownChart(basic, overtime, bonus, deduct) {
@@ -1304,7 +1251,6 @@
             });
         }
 
-        // Render Calendar
         function renderCalendarVisualization() {
             const grid = document.getElementById('calendar-grid');
             grid.innerHTML = '';
@@ -1342,10 +1288,8 @@
 
                 if (isSunday || isHoliday) {
                     card.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-700');
-                    if (isHoliday) card.title = "Libur Nasional";
                 } else if (isSaturday) {
                     card.classList.add('bg-amber-50', 'border-amber-200', 'text-amber-700');
-                    card.title = "Sabtu (Normal s/d 15:00 WITA)";
                 } else {
                     card.classList.add('bg-blue-50/50', 'border-blue-100', 'text-blue-800');
                 }
@@ -1360,7 +1304,6 @@
             triggerGlobalRender();
         }
 
-        // Active Slip Selection
         function renderActiveSlipSelector() {
             const selector = document.getElementById('active-slip-selector');
             selector.innerHTML = '';
@@ -1382,7 +1325,6 @@
             renderSlipGajiView();
         }
 
-        // Render Slip Gaji
         function renderSlipGajiView() {
             if (employees.length === 0 || selectedEmployeeIdx >= employees.length) return;
 
@@ -1402,18 +1344,15 @@
             document.getElementById('slip-emp-attendance').textContent = `: ${activeEmp.attendance} / ${activeEmp.totalWorkdays} Hari`;
             document.getElementById('slip-emp-overtime').textContent = `: ${activeEmp.overtimeMinutes} Menit`;
 
-            // Penerimaan
             document.getElementById('slip-item-base').textContent = formatIDR(calc.presenceSalary);
             document.getElementById('slip-item-overtime').textContent = formatIDR(calc.overtimePay);
             document.getElementById('slip-item-bonus').textContent = formatIDR(activeEmp.bonus);
             document.getElementById('slip-item-gross').textContent = formatIDR(calc.presenceSalary + calc.overtimePay + activeEmp.bonus);
 
-            // Potongan
             document.getElementById('slip-item-kasbon').textContent = formatIDR(activeEmp.kasbon);
             document.getElementById('slip-item-cuti').textContent = `${activeEmp.sisaCuti} Hari`;
             document.getElementById('slip-item-deduction').textContent = formatIDR(activeEmp.kasbon);
 
-            // Net
             document.getElementById('slip-netto').textContent = formatIDR(calc.netPay);
             document.getElementById('slip-terbilang').textContent = `# ${terbilangRupiah(calc.netPay)} rupiah #`;
 
@@ -1421,7 +1360,6 @@
             document.getElementById('slip-sign-comp').textContent = compName;
         }
 
-        // High Quality PDF Download logic via html2canvas scale + jsPDF
         async function downloadSelectedSlipPDF() {
             if (employees.length === 0 || selectedEmployeeIdx >= employees.length) return;
 
@@ -1439,7 +1377,6 @@
 
             try {
                 const element = document.getElementById('slip-gaji-printable');
-                
                 const options = {
                     scale: 3, 
                     useCORS: true,
@@ -1489,7 +1426,6 @@
             }
         }
 
-        // Export data rekap as Excel / CSV file
         function exportAllToCSV() {
             const compName = document.getElementById('comp-name').value || "PT";
             const monthStr = document.getElementById('comp-month').value;
@@ -1528,7 +1464,6 @@
             }
         }
 
-        // Download Format Contoh Absen File
         function downloadFormatContoh() {
             const lines = [
                 ["Lap. Detail Absensi"],
@@ -1551,7 +1486,6 @@
             document.body.removeChild(link);
         }
 
-        // Helpers
         function formatNumStr(num) {
             if(!num) return "0";
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
